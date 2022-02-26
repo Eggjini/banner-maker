@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="preload" href="https://fonts.googleapis.com">
+    <link rel="preload" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Gugi&family=Jua&family=Kirang+Haerang&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet"> 
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>🎨 썸네일 메이커</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class ="main">
+        
+        <div id="canvas">
+            <canvas id="subTxt" class="cvs" width="960px" height="540px">
+            </canvas>
+            <canvas id="Txt" class="cvs" width="960px" height="540px">
+            </canvas>
+            <canvas id="img" class="cvs" width="960px" height="540px">
+            </canvas>
+            <canvas id="canvasSubmit" width="960px" height="540px">
+            </canvas>
+        </div> <!--end canvas-->
+        <div id="colorBox">
+            <div id="colorWrap">
+                <div id="c0" class="ptColor" onclick="change(c0)"></div>
+                <div id="c1" class="ptColor" onclick="change(c1)"></div>
+                <div id="c2" class="ptColor" onclick="change(c2)"></div>
+                <div id="c3" class="ptColor" onclick="change(c3)"></div>
+                <div id="c4" class="ptColor" onclick="change(c4)"></div>
+                <div id="c5" class="ptColor" onclick="change(c5)"></div>
+                <div id="c6" class="ptColor" onclick="change(c6)"></div>
+                <div id="c7" class="ptColor" onclick="change(c7)"></div>
+                <div id="c8" class="ptColor" onclick="change(c8)"></div>
+                <div id="c9" class="ptColor" onclick="change(c9)"></div>
+                <div class="cp_wrapper">
+                    <input class="ptColor" id="slColor" type="color" value="#ff6e6e" onchange="changeC()">
+                </div> <!--end cp_wrapper-->
+                <button id="randomBtn" onclick="randomColor()">랜덤</button>
+            </div>
+            <div id="gradientWrap">
+                <div id="g1" class="ptColor" onclick="changeG(g1)"></div>
+                <div id="g2" class="ptColor" onclick="changeG(g2)"></div>
+                <div id="g3" class="ptColor" onclick="changeG(g3)"></div>
+                <div id="g4" class="ptColor" onclick="changeG(g4)"></div>
+                <div id="g5" class="ptColor" onclick="changeG(g5)"></div>
+                <div id="g6" class="ptColor" onclick="changeG(g6)"></div>
+                <div id="g7" class="ptColor" onclick="changeG(g7)"></div>
+                <div id="g8" class="ptColor" onclick="changeG(g8)"></div>
+                <div id="g9" class="ptColor" onclick="changeG(g9)"></div>
+                <div id="g10" class="ptColor" onclick="changeG(g10)"></div>
+                <div id="g11" class="ptColor" onclick="changeG(g11)"></div>
+
+            </div>
+        </div> <!--end colorBox-->
+        <div id="Mod">
+            <input type="text" class="input" id="Title" placeholder="Title (제목)">
+            <div class="titleFont">
+                <select id="titleFont" class="select" onchange="titleChange()">
+                    <option value="Black Han Sans">검은고딕</option>
+                    <option value="Do Hyeon">배민 도현체</option>
+                    <option value="Kirang Haerang">배민 기랑해랑</option>
+                    <option value="Jua">배민 주아체</option>
+                    <option value="batang">바탕체</option>
+                    <option value="notosanskr">본고딕</option>
+                    <option value="Chosunilbo_myungjo">조선일보명조체</option>
+                    <option value="GmarketSansBold" selected>지마켓 산스 B</option>
+                    <option value="GmarketSansLight">지마켓 산스 L</option>
+                    <option value="twayair">티웨이 항공체</option>
+
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Gugi">Gugi</option>
+                    <option value="Impact">Impact</option>
+                </select>
+                <div id="titleRange" class="range">
+                    <span id="tRangeValue" class="rangeValue">80 </span> <span class="rangeValue">px</span>
+                    <input id="titleSizeInput" type="range" value="80" min="40" max="150" oninput="titleChange()">
+                </div>
+            </div> 
+            <input type="text" class="input" id="subTitle" placeholder="Subtitle (부제목)">
+
+            <div class="subFont">
+                <select id="subFont" class="select" onchange="subSize()">
+                    <option value="Black Han Sans">검은고딕</option>
+                    <option value="Do Hyeon">배민 도현체</option>
+                    <option value="Kirang Haerang">배민 기랑해랑</option>
+                    <option value="Jua">배민 주아체</option>
+                    <option value="바탕체">바탕체</option>
+                    <option value="Noto Sans KR" selected>본고딕</option>
+                    <option value="Chosunilbo_myungjo">조선일보명조체</option>
+                    <option value="GmarketSansBold">지마켓 산스 B</option>
+                    <option value="GmarketSansLight">지마켓 산스 L</option>
+                    <option value="twayair">티웨이 항공체</option>
+
+                    <option value="Arial Black">Arial Black</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Gugi">Gugi</option>
+                    <option value="Impact">Impact</option>
+                </select>
+            <div id="subRange" class="range">
+                <span id="subRangeValue" class="rangeValue">40</span> <span class="rangeValue">px</span>
+                <input id="subInput" type="range" value="40" min="20" max="65" oninput="subSize()">
+            </div>
+            </div>
+            <button id="dlButton" onclick="download()">다운로드</button>
+            <div class="infoDiv">
+                <a href="https://eggjini.tistory.com" class="info" target="blank">제작자</a>
+                <a href="https://github.com/Eggjini/banner-maker" class="info" target="blank">깃허브</a>
+                <a href="https://eggjini.tistory.com/14" class="info" target="blank">업데이트</a>
+            </div>
+        </div>
+    </div> <!--end main-->
+
+    <script src="script.js"></script>
+</body>
+</html>
